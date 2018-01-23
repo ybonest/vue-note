@@ -1,40 +1,40 @@
 #### 1.插值表达式
-    ``` 
-    <div id="app">
-        <p>{{ message }}</p>
-    </div>
-    <script>
-        new Vue({
-            el:"#app",
-            data:{
-                message:"Hello Vue"
-            }
-        })
-    </script>
-    ```
+``` 
+<div id="app">
+    <p>{{ message }}</p>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:"Hello Vue"
+        }
+    })
+</script>
+```
 
 #### 2.v-cloak
  > 插值表达式存在闪烁问题，可以使用v-cloak解决闪烁问题
 
-    ```
-    CSS样式设置
-    <style>
-        [v-cloak] {
-        display: none;
+```
+CSS样式设置
+<style>
+    [v-cloak] {
+    display: none;
+    }
+</style>
+<div id="app" v-cloak>
+    <h3>{{ message }}</h3>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:"Hello Vue"
         }
-    </style>
-    <div id="app" v-cloak>
-        <h3>{{ message }}</h3>
-    </div>
-    <script>
-        new Vue({
-            el:"#app",
-            data:{
-                message:"Hello Vue"
-            }
-        })
-    </script>
-    ```
+    })
+</script>
+```
 
 #### 3.v-text
 > 注意：v-text会覆盖元素原有内容
