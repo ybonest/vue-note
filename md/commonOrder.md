@@ -86,4 +86,4 @@ CSS样式设置
 <svg><a :xlink:special="foo"></a></svg>
 ```
 
------- 内容参考：[Vue教程](https://cn.vuejs.org/v2/guide/)
+                                    ------ 内容参考：[Vue教程](https://cn.vuejs.org/v2/guide/)
