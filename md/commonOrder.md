@@ -36,7 +36,6 @@ CSS样式设置
 </script>
 ```
 
-
 3. v-text
 > 注意：v-text会覆盖元素原有内容
 
