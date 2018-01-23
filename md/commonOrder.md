@@ -137,4 +137,58 @@ CSS样式设置
 <button v-on:click.once="doThis"></button>
 ```
 
+#### 7. v-for/key
+> 通常用来迭代数组以及对象
+
+```
+<div v-for="item in items">
+  {{ item.text }}
+</div>
+
+<div v-for="(item, index) in items"></div>
+<div v-for="(val, key) in object"></div>
+<div v-for="(val, key, index) in object"></div>
+
+<div v-for="item in items" :key="item.id">
+  {{ item.text }}
+</div>
+```
+
+> v-for在更新已渲染过的元素时，默认用“就地复用”策略，表现为如果数据项的顺序被改变，Vue将不会移动DOM元素来匹配数据项的顺序，因此需要为每项添加一个唯一`key`属性(建议尽可能在使用 v-for 时提供 key)
+
+```
+<div v-for="item in items" :key="item.id">
+  <!-- 内容 -->
+</div>
+```
+
+#### 8. v-if/v-show
+> v-if 和 v-show 的作用，都是切换界面上元素的显示或隐藏的
+
+> 一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
+
+```
+ <div id="app">
+    <input type="button" value="Toggle" @click="flag=!flag">
+    <p>{{ flag }}</p>
+
+    <!-- v-if 是 动态 创建或删除元素，实现 显示或隐藏 -->
+    <h4 v-if="flag">if操作</h4>
+
+    <!-- v-show 是控制元素的 display:none 样式，来控制元素的显示或隐藏 -->
+    <h4 v-show="flag">show操作</h4>
+  </div>
+
+  <script>
+    // View Model
+    var vm = new Vue({
+      el: '#app', // View 
+      data: { // Model
+        flag: false
+      }
+    })
+  </script>
+```
+
+
 ----------------------------------内容参考：[Vue教程](https://cn.vuejs.org/v2/guide/)
