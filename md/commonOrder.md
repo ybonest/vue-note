@@ -37,6 +37,7 @@ CSS样式设置
 ```
 
 3. v-text
+
 > 注意：v-text会覆盖元素原有内容
 
 ```
@@ -45,6 +46,7 @@ CSS样式设置
 
 
 4. v-html
+
 ```
 <div v-html="html"></div>
 ```
