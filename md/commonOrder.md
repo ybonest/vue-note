@@ -37,7 +37,6 @@
     ```
 
 3. v-text
-
     > 注意：v-text会覆盖元素原有内容
 
     ```
@@ -46,11 +45,9 @@
 
 
 4. v-html
-
     ```
     <div v-html="html"></div>
     ```
-
 
 5. v-bind
     > 为html属性节点绑定数据
