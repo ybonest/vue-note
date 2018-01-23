@@ -36,19 +36,22 @@
 </script>
 ```
 
+
 3. v-text
+> 注意：v-text会覆盖元素原有内容
 ```
 <div v-text="message"></div>
 ```
- - 注意：v-text会覆盖元素原有内容
+
 
 4. v-html
 ```
 <div v-html="html"></div>
 ```
 
+
 5. v-bind
- - 为html属性节点绑定数据
+> 为html属性节点绑定数据
 ```
 <!-- 绑定一个属性 -->
 <img v-bind:src="imageSrc">
