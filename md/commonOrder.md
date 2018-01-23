@@ -39,6 +39,7 @@ CSS样式设置
 
 3. v-text
 > 注意：v-text会覆盖元素原有内容
+
 ```
 <div v-text="message"></div>
 ```
@@ -52,6 +53,7 @@ CSS样式设置
 
 5. v-bind
 > 为html属性节点绑定数据
+
 ```
 <!-- 绑定一个属性 -->
 <img v-bind:src="imageSrc">
