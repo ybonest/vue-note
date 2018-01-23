@@ -88,18 +88,19 @@ CSS样式设置
 
 #### 6. v-on
 > 事件绑定
-    + 修饰符
-        .stop - 调用 event.stopPropagation()。
-        .prevent - 调用 event.preventDefault()。
-        .capture - 添加事件侦听器时使用 capture 模式。
-        .self - 只当事件是从侦听器绑定的元素本身触发时才触发回调。
-        .{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。
-        .native - 监听组件根元素的原生事件。
-        .once - 只触发一次回调。
-        .left - (2.2.0) 只当点击鼠标左键时触发。
-        .right - (2.2.0) 只当点击鼠标右键时触发。
-        .middle - (2.2.0) 只当点击鼠标中键时触发。
-        .passive - (2.3.0) 以 { passive: true } 模式添加侦听器
+
++ 修饰符
+    - .stop - 调用 event.stopPropagation()。
+    - .prevent - 调用 event.preventDefault()
+    - .capture - 添加事件侦听器时使用 capture 模式。
+    - .self - 只当事件是从侦听器绑定的元素本身触发时才触发回调。
+    - .{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。
+    - .native - 监听组件根元素的原生事件。
+    - .once - 只触发一次回调。
+    - .left - (2.2.0) 只当点击鼠标左键时触发。
+    - .right - (2.2.0) 只当点击鼠标右键时触发。
+    - .middle - (2.2.0) 只当点击鼠标中键时触发。
+    - .passive - (2.3.0) 以 { passive: true } 模式添加侦听器
 
 ```
 <!-- 方法处理器 -->
