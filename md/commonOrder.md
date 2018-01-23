@@ -1,5 +1,5 @@
-#### 1.插值表达式
-``` 
+#### 1. 插值表达式
+```
 <div id="app">
     <p>{{ message }}</p>
 </div>
@@ -13,7 +13,7 @@
 </script>
 ```
 
-#### 2.v-cloak
+#### 2. v-cloak
  > 插值表达式存在闪烁问题，可以使用v-cloak解决闪烁问题
 
 ```
@@ -36,18 +36,19 @@ CSS样式设置
 </script>
 ```
 
-#### 3.v-text
+#### 3. v-text
 > 注意：v-text会覆盖元素原有内容
+
 ```
 <div v-text="message"></div>
 ```
 
-#### 4.v-html
+#### 4. v-html
 ```
 <div v-html="html"></div>
 ```
 
-#### 5.v-bind
+#### 5. v-bind
 > 为html属性节点绑定数据
 
 ```
