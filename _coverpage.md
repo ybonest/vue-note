@@ -1,4 +1,4 @@
-<img src="./media/cssbg.jpg" width="500" alt="">
+<img src="./media/cssbg.jpg" width="380" alt="">
 
 # VUE笔记
 
