@@ -16,13 +16,12 @@
 2. v-cloak
  > 插值表达式存在闪烁问题，可以使用v-cloak解决闪烁问题
 ```
-//CSS样式设置
+CSS样式设置
 <style>
     [v-cloak] {
       display: none;
     }
 </style>
-
 <div id="app" v-cloak>
     <h3>{{ message }}</h3>
 </div>
