@@ -84,31 +84,4 @@
 <svg><a :xlink:special="foo"></a></svg>
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
------- 内容参考：Vue教程<a href="https://cn.vuejs.org">
+------ 内容参考：Vue教程
