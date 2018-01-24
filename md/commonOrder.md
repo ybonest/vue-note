@@ -155,6 +155,7 @@ CSS样式设置
 ```
 
 > v-for在更新已渲染过的元素时，默认用“就地复用”策略，表现为如果数据项的顺序被改变，Vue将不会移动DOM元素来匹配数据项的顺序，因此需要为每项添加一个唯一`key`属性(建议尽可能在使用 v-for 时提供 key)
+>:key的值只接受string或number
 
 ```
 <div v-for="item in items" :key="item.id">
