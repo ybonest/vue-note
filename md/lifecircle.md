@@ -16,4 +16,4 @@
 
 
 ### 图解
-![img](../media/lifecycle.png)
+![img](/media/lifecycle.png)
