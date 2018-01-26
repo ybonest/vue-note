@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <my-con :msg="message" :arr="arr" :obj="obj" @fn="myFn" @my="myFnHas"></my-con>
+  </div>
+  <script>
+    Vue.component("myCon",{
+      template:`<div>
+        <h1>父元素传来的message:{{ msg }}</h1>
+        <ul>
+          <li v-for="item in arr">{{ item }}</li>
+        </ul>
+        <table>
+          <tr v-for="(ele,key) in obj">
+            <td>{{ key }}</td>
+            <td>{{ ele }}</td>
+          </tr>
+        </table>
+        <button @click="mySubFn">点击我触发父元素传递来的无参函数</button>
+        <button @click="mySubFnHas">点击我触发父元素传递来的有参函数</button>
+      </div>`,
+      props:["msg","arr","obj"],
+      methods:{
+        mySubFn(){
+          this.$emit('fn')  //触发父元素传递的函数
+        },
+        mySubFnHas(){
+          console.log("zi");
+          this.$emit('my','我是子元素传递来的')  //触发父元素传递的函数
+        }
+      }
+    })
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        message:"这里是父元素内容",
+        arr:['one','two','three'],
+        obj:{
+          name:'bobo',
+          age:'18'
+        },
+        subData:""
+      },
+      methods:{
+        myFn(){
+          document.write('父元素方法打印,无参');
+        },
+        myFnHas(arg){
+          console.log("fu")
+          document.write('父元素方法打印：'+arg);
+          this.subData = arg;  //接受子元素传来的参数
+        }
+      }
+    })
+  </script>
+</body>
+</html>
