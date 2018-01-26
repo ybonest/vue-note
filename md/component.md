@@ -175,7 +175,7 @@ new Vue({
   }
   ```
 
-  实例[(链接)](https://ybonest.github.io/vue-note/html/dataprops.html)
+  + 实例[(链接)](https://ybonest.github.io/vue-note/html/dataprops.html)
   ```
   <div id="app">
     <mycom :pinfo="info"></mycom>
