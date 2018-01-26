@@ -165,4 +165,48 @@ new Vue({
       </script>
       ```
 
+  + 使用this可以访问props中的父组件传来的信息
+  ```
+  props: ['size'],
+  computed: {
+    normalizedSize: function () {
+      return this.size.trim().toLowerCase()
+    }
+  }
+  ```
+
+  实例[(链接)](https://ybonest.github.io/vue-note/html/dataprops.html)
+  ```
+  <div id="app">
+    <mycom :pinfo="info"></mycom>
+  </div>
+  <script>
+    Vue.component('mycom', {
+      template: `<div>
+        <p @click="msg='data上的msg被修改了'">** 私有的 data 数据：</p>
+        <h3>{{ msg }}</h3>
+        <hr/>
+        <p @click="infoFromParent='props数据被修改了'">** 外界传递过来的 props 数据：</p>
+        <h3>{{ infoFromParent }}</h3>
+      </div>`,
+      data() {
+        return {
+          msg: '123',
+          infoFromParent: this.pinfo
+        }
+      },
+      props: ['pinfo']
+    })
+
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        info: '父节点的数据'
+      },
+      methods: {}
+    });
+  </script>
+  ```
+
 

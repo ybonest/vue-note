@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue-2.5.13.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <mycom :pinfo="info"></mycom>
+  </div>
+  <script>
+    Vue.component('mycom', {
+      template: `<div>
+        <p @click="msg='data上的msg被修改了'">** 私有的 data 数据：</p>
+        <h3>{{ msg }}</h3>
+        <hr/>
+        <p @click="infoFromParent='props数据被修改了'">** 外界传递过来的 props 数据：</p>
+        <h3>{{ infoFromParent }}</h3>
+      </div>`,
+      data() {
+        return {
+          msg: '123',
+          infoFromParent: this.pinfo
+        }
+      },
+      props: ['pinfo']
+    })
+
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        info: '父节点的数据'
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>
