@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/js/vue-2.5.13.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <mycom></mycom>
+  </div>
+
+  <script>
+
+    Vue.component('mycom', {
+      template: '<div><h1 @click="showMsg">{{ msg }}</h1><h1>12345</h1></div>',
+      data: function () {
+        return {
+          msg: '这是组件的数据'
+        }
+      },
+      created() {
+        this.test()
+      },
+      methods: {
+        showMsg() {
+          console.log(this.msg)
+        },
+        test() {
+          console.log('测试组件能否有自己的生命周期函数')
+        }
+      }
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        info: '123'
+      },
+      methods: {}
+    });
+
+    // 组件和实例的相同和区别：
+    // 1. 组件通过 Vue.component() 函数创建出来的
+    // 2. 实例是通过  new Vue() 创建出来的
+    // 3. 创建组件和创建实例，都需要传递一个配置对象
+    // 4. 组件的配置对象，和实例的配置对象，最大的不同点，就是：组件的data 必须是一个函数并return 一个 对象；实例的 data 可以是 对象
+  </script>
+</body>
+
+</html>
