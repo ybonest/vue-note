@@ -53,9 +53,21 @@ new Vue({
 </table>
 ```
 
+### 组件中的data必须是函数
+```
+Vue.component('simple-counter', {
+  template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+  data: function () {
+    return { counter: 0 }
+  }
+})
+new Vue({
+  el: '#example-2'
+})
+```
 
-+ 使用data、methods、created等
-  - 组件中与Vue实例相似，可以使用data、methods、created等
+> 组件中除data之外，还拥有Vue实例的其他属性
+
   实例[链接](https://ybonest.github.io/vue-note/html/component.html)
   ```
   Vue.component('mycom', {
@@ -86,3 +98,5 @@ new Vue({
       methods: {}
     });
   ```
+
+
