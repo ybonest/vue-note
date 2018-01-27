@@ -28,3 +28,68 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
 </transiton>
 //当transition增加name属性后，v-enter等就替换为ybo-enter
 ```
+
+动画实例一,动画基本用法[(链接)](https://ybonest.github.io/vue-note/html/animate1.html)
+```
+  <style>
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 2s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="flag=!flag">Toggle</button>
+    <transition>
+      <h3 v-show="flag">动画测试</h3>
+    </transition>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        flag:false
+      }
+    })
+  </script>
+```
+
+### 自定义过渡类名
++ enter-class
++ enter-active-class
++ enter-to-class
++ leave-class
++ leave-active-class
++ leave-to-class
+
+动画实例二，使用现有动画库[Animate.css](https://daneden.github.io/animate.css/)--[(链接)](https://ybonest.github.io/vue-note/html/animate2.html)
+
+```
+<div id="app">
+    <button @click="flag=!flag">Toggle1</button>
+    <transition enter-active-class="fadeInDown" leave-active-class="fadeOutDown">
+       <!-- 使用Animate.css一定要给动起来的元素，添加 animated 类名  -->
+      <p v-show="flag" class="animated">动画测试，使用第三方动画库</p>
+    </transition>
+    <button @click="flag2=!flag2">Toggle2</button>
+       <!--或者在定义类名前加animated  -->    
+    <transition enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown">
+      <p v-show="flag2">动画测试，使用第三方动画库</p>
+    </transition>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        flag:false,
+        flag2:false
+      }
+    })
+  </script>
+```
