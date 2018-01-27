@@ -12,12 +12,12 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
 + 组件根节点
 
 ### 过渡类名
-1. v-enter：定义过渡的开始状态
-2. v-enter-active：定义过渡的状态
-3. v-enter-to：定义进入过渡的结束状态
-4. v-leave：定义离开过渡的开始状态
-5. v-leave-active：定义过渡的状态，在元素离开过渡被触发后立即生效
-6. v-leave-to：定义离开过渡的结束状态
+1. v-enter：定义过渡的开始状态，在元素被插入时生效，在下一帧移除
+2. v-enter-active：定义过渡的状态，在元素被插入时生效，在transition/animation完成后移除
+3. v-enter-to：定义进入过渡的结束状态，在元素被插入一帧后生效，(与此同时 v-enter 被删除)，在 transition/animation 完成之后移除。
+4. v-leave：定义离开过渡的开始状态，在离开过渡被触发时生效，在下一帧移除。
+5. v-leave-active：定义过渡的状态，在元素离开过渡被触发后立即生效，在元素整个过渡过程中作用，在离开过渡被触发后立即生效，在 transition/animation 完成之后移除
+6. v-leave-to：定义离开过渡的结束状态，在离开过渡被触发一帧后生效 (与此同时 v-leave 被删除)，在 transition/animation 完成之后移除
 
 ![img](/media/animate.png)
 
