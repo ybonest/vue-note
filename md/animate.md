@@ -60,6 +60,53 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
   </script>
 ```
 
+动画实例二，使用transition的name属性[(链接)](https://ybonest.github.io/vue-note/html/animate3.html)
+```
+<style>
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 2s ease-in-out;
+    }
+
+    .my-enter,
+    .my-leave-to{
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    .my-enter-active,
+    .my-leave-active{
+      transition: all 2s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="flag1=!flag1">Toggle</button>
+    <transition>
+      <p v-show="flag1">动画一</p>
+    </transition>
+    <hr>
+    <button @click="flag2=!flag2">Toggle</button>
+    <transition name="my">
+        <p v-show="flag2">动画一</p>
+      </transition>    
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        flag1:false,
+        flag2:false
+      }
+    })
+  </script>
+```
+
 ### 自定义过渡类名
 + enter-class
 + enter-active-class
@@ -68,7 +115,7 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
 + leave-active-class
 + leave-to-class
 
-动画实例二，使用现有动画库[Animate.css](https://daneden.github.io/animate.css/)--[(链接)](https://ybonest.github.io/vue-note/html/animate2.html)
+动画实例三，使用现有动画库[Animate.css](https://daneden.github.io/animate.css/)--[(链接)](https://ybonest.github.io/vue-note/html/animate2.html)
 
 ```
 <div id="app">
