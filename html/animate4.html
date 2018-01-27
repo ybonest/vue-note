@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+  <style>
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateX(200px);
+    }
+
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="flag=!flag">Toggle</button>
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave">
+      <h1 v-show="flag" v-bind:css="false">钩子动画</h1>
+    </transition>
+    <transition>
+      <h1 v-show="flag">钩子动画</h1>
+    </transition>
+    <h3>{{ message }}</h3>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        flag:false,
+        message:''
+      },
+      methods:{
+        beforeEnter(el){
+          this.message = "开始入场动画之前执行beforeEnter函数";
+          console.log("开始入场动画之前执行beforeEnter函数");
+        },
+        enter(el,done){
+          this.message = "入场动画执行中enter";
+          console.log("入场动画执行中enter");
+          done();
+        },
+        afterEnter(el){
+          this.message = "入场动画完成了";
+          console.log("入场动画完成了");
+        },
+        beforeLeave(el){
+          this.message = "开始出场动画之前执行beforeLeave函数";
+          console.log("开始出场动画之前执行beforeLeave函数");
+        },
+        leave(el,done){
+          this.message = "正在执行出场动画";
+          console.log("正在执行出场动画");
+          done();
+        },
+        afterLeave(el){
+          this.message = "出场完成";
+          console.log("出场完成");
+        }
+      }
+    })
+  </script>
+</body>
+</html>

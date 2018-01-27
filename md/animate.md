@@ -140,3 +140,94 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
     })
   </script>
 ```
+
+### JavaScript钩子
+```
+<transition
+  @before-enter="beforeEnter"
+  @enter="enter"
+  @after-enter="afterEnter"
+  @enter-cancelled="enterCancelled"
+  
+  @before-leave="beforeLeave"
+  @leave="leave"
+  @after-leave="afterLeave"
+  @leave-cancelled="leaveCancelled">
+</transition>
+```
+
+动画实例[(链接)](https://ybonest.github.io/vue-note/html/animate4.html)
+```
+ <style>
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateX(200px);
+    }
+
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="flag=!flag">Toggle</button>
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave">
+      <h1 v-show="flag" v-bind:css="false">钩子动画</h1>
+    </transition>
+    <transition>
+      <h1 v-show="flag">钩子动画</h1>
+    </transition>
+    <h3>{{ message }}</h3>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        flag:false,
+        message:''
+      },
+      methods:{
+        beforeEnter(el){
+          this.message = "开始入场动画之前执行beforeEnter函数";
+          console.log("开始入场动画之前执行beforeEnter函数");
+        },
+        enter(el,done){
+          this.message = "入场动画执行中enter";
+          console.log("入场动画执行中enter");
+          done();
+        },
+        afterEnter(el){
+          this.message = "入场动画完成了";
+          console.log("入场动画完成了");
+        },
+        beforeLeave(el){
+          this.message = "开始出场动画之前执行beforeLeave函数";
+          console.log("开始出场动画之前执行beforeLeave函数");
+        },
+        leave(el,done){
+          this.message = "正在执行出场动画";
+          console.log("正在执行出场动画");
+          done();
+        },
+        afterLeave(el){
+          this.message = "出场完成";
+          console.log("出场完成");
+        }
+      }
+    })
+  </script>
+```
+
+> 当只用JavaScript过渡的时候，在enter和leave中，回调函数done是必须的，否则它们会被同步调用，过渡会立即完成
+
+> 推荐对于仅使用JavaScript过渡的元素添加v-bind:css="false"，Vue会跳过CSS的检测
