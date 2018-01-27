@@ -19,7 +19,7 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
 5. v-leave-active：定义过渡的状态，在元素离开过渡被触发后立即生效
 6. v-leave-to：定义离开过渡的结束状态
 
-![img](/md/animate.png)
+![img](/media/animate.png)
 
 对于这些在enter/leave过渡中切换的类名，v-是这些类名的前缀，可以修改，如下
 ```
