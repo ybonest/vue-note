@@ -41,5 +41,5 @@
   </script>
 ```
 
-代码展示以及实例链接(https://ybonest.github.io/vue-note/html/router1.html)
+代码展示以及[链接](https://ybonest.github.io/vue-note/html/router1.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router1.html"></iframe>
