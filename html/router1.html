@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <script src="../js/vue-router-3.0.1.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 使用router-link组件导航 -->
+    <!-- 通过传入to属性指定链接 -->
+    <!-- <<router-link>默认会被渲染成一个<a>标签 -->
+    <router-link to="/home">home</router-link>
+    <router-link to="/movie">movie</router-link>
+    <router-link to="/about">about</router-link>
+    
+    <!-- 路由出口 -->
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-view></router-view>
+  </div>
+  <script>
+    const home = {
+      template: "<h1>home</h1>"
+    }
+    const movie = {
+      template: "<h1>movie</h1>"
+    }
+    const about = {
+      template: "<h1>about</h1>"
+    }
+
+    const router = new VueRouter({
+      routes: [
+        { path: '/home', component: home },
+        { path: '/movie', component: movie },
+        { path: '/about', component: about }
+      ]
+    })
+
+    new Vue({
+      el: "#app",
+      data: {},
+      methods: {},
+      router
+    })
+  </script>
+</body>
+
+</html>
