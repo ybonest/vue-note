@@ -13,24 +13,24 @@
       color: bisque;
       font-weight: 900;
       text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-      animation: animate 2s ease infinite;
+      animation: animate 2s ease-out infinite;
       display: inline-block;
     }
     @keyframes animate{
       0% {
-        transform: translateY(20px);
+        transform: translateY(10px);
       } 
       25% {
-        transform: translateY(0px);
+        transform: translateY(15px);
       }
       50% {
-        transform: translateY(-20px);
-      }
-      75% {
         transform: translateY(0px);
       }
+      75% {
+        transform: translateY(5px);
+      }
       100% {
-        transform: translateY(20px);
+        transform: translateY(10px);
       }
     }
   </style>
