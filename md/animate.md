@@ -1,3 +1,4 @@
+<script src="/vue-note/js/common.js"></script>
 ### 过渡
 Vue在插入、更新或者移除DOM时提供多种不同方式的应用过渡效果
 + 在CSS过渡和动画中自动应用class
@@ -232,7 +233,17 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
 
 > 推荐对于仅使用JavaScript过渡的元素添加v-bind:css="false"，Vue会跳过CSS的检测
 
+动画实例，使用动画钩子函数[(链接)](html/animate5.html)
+<iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/animate5.html"></iframe>
 
-
+动画实例，使用动画钩子函数[(链接)](html/animate6.html)
 <iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate6.html"></iframe>
-<script src="/vue-note/js/common.js"></script>
+
+动画实例，使用动画钩子函数[(链接)](html/animate7.html)
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate7.html"></iframe>
+
+动画实例，使用transition-group[(链接)](html/animate8.html)
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate8.html"></iframe>
+
+动画实例，使用transition-group升级版[(链接)](html/animate8.html)
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate8.html"></iframe>
