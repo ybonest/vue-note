@@ -1,6 +1,18 @@
 ### 路由基础用法
+1. 使用<router-link>创建路由hash链接
+2. 使用</router-view>创建路由组件容器
+3. 创建VueRoute实例，自定规则对应关系
+4. Vue实例中指定路由对象，把创建号的路由对象挂载到VM实例上
 
 ```
+  <style>
+    .yboactive{
+      font-size: 15px;
+      font-weight: 500;
+      color: red;
+    }
+  </style>
+
   <div id="app">
     <!-- 使用router-link组件导航 -->
     <!-- 通过传入to属性指定链接 -->
@@ -26,6 +38,8 @@
 
     const router = new VueRouter({
       routes: [
+        // { path:'/',component:home}, //设置默认展示的组件，不推荐
+        { path: '/', redirect: '/home' },  //使用redirect属性，设置路由重定向
         { path: '/home', component: home },
         { path: '/movie', component: movie },
         { path: '/about', component: about }
@@ -42,12 +56,13 @@
       el: "#app",
       data: {},
       methods: {},
-      router
+      router  // 用来指定路由对象的， 把创建好的路由对象，挂载到VM实例上
     })
   </script>
 ```
 
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/router1.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router1.html"></iframe>
+
 
 

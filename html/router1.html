@@ -8,7 +8,7 @@
   <script src="../js/vue-2.5.13.js"></script>
   <script src="../js/vue-router-3.0.1.js"></script>
   <style>
-    .yboactive{
+    .yboactive {
       font-size: 15px;
       font-weight: 500;
       color: red;
@@ -25,7 +25,7 @@
     <router-link to="/home">home</router-link>
     <router-link to="/movie">movie</router-link>
     <router-link to="/about">about</router-link>
-    
+
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-view></router-view>
@@ -43,6 +43,8 @@
 
     const router = new VueRouter({
       routes: [
+        // { path:'/',component:home}, //设置默认展示的组件，不推荐
+        { path: '/', redirect: '/home' },  //使用redirect属性，设置路由重定向
         { path: '/home', component: home },
         { path: '/movie', component: movie },
         { path: '/about', component: about }
@@ -52,7 +54,7 @@
       //因此我们可以router-link-active来修改标签被选中的默认样式，即通俗说的
       //高亮效果，同时Vue-router中还提供了linkActiveClass属性，可以覆盖默认提供的
       //router-link-active类名
-      linkActiveClass:'yboactive'
+      linkActiveClass: 'yboactive'
     })
 
     new Vue({
