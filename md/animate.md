@@ -234,4 +234,4 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
 
 
 
-<iframe src="../html/animate6.html"></iframe>
+<iframe src="https://ybonest.github.io/vue-note/html/animate6.html"></iframe>
