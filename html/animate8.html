@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+  <style>
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="name">
+    <input type="button" value="添加" @click="add">
+    <transition-group appear tag="ul">
+      <li v-for="item in list" :key="item.id">
+        {{ item.name }}
+      </li>
+    </transition-group>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        name:"",
+        list:[
+          {id:1,name:"one"},
+          {id:2,name:"two"},
+          {id:3,name:"three"}
+        ]
+      },
+      methods:{
+        add(){
+          this.list.push({id:this.list.length+1,name:this.name});
+          this.name = "";
+        }
+      }
+    })
+  </script>
+</body>
+</html>

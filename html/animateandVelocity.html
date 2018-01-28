@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue-2.5.13.js"></script>
+  <script src="../js/velocity.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="flag=!flag">Toggle</button>
+    <transition @before-enter="beforeEnter" @enter="enter" @leave="leave" :css="false">
+      <p v-if="flag">Demo</p>
+    </transition>
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        flag: false
+      },
+      methods: {
+        beforeEnter(el) {
+          el.style.opacity = 0;
+          el.style.transformOrigin = 'left';
+        },
+        enter(el, done) {
+          console.log(Velocity)
+          Velocity(el, { opacity: 1, fontSize:'1.4em' }, { duration: 300 });
+          Velocity(el, { fontSize: '1em' }, { complete: done });
+        },
+        leave(el, done) {
+          Velocity(el, { translateX: "15px", rotateZ: "50deg" }, { duration: 600 });
+          Velocity(el, { rotateZ: '100deg' }, { loop: 2 });
+          Velocity(el, {
+            rotateZ: "45deg",
+            translateY: "30px",
+            translateX: "30px",
+            opacity: 0
+          }, { complete: done })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

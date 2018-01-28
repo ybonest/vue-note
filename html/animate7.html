@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button @click="flag=!flag">Toggle</button>
+    <transition
+    @before-enter="beforeEnter"
+    @enter="enter"
+    @leave="leave">
+      <h3 v-show="flag">动画测试</h3>
+    </transition>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        flag:false
+      },
+      methods:{
+        beforeEnter(el){
+          el.style.opacity=0;
+          el.style.transform="translateX(100px)";
+        },
+        enter(el,done){
+          el.offsetWidth;
+          el.style.opacity = 1;
+          el.style.transition="all 2s ease";
+          el.style.transform = 'translateX(0px)';
+          done();
+        },
+        leave(el){
+          el.offsetWidth;
+          el.style.opacity = 0;
+          el.style.transform = 'translateX(100px)';
+          el.style.transition = 'all 2s ease';
+        }
+      }
+    })
+  </script>
+</body>
+</html>

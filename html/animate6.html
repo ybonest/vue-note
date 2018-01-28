@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+  <style>
+    .ball{
+      width: 20px;
+      height: 20px;
+      background-color: brown;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button @click="flag=!flag">Click</button>
+    <transition
+    @before-enter="beforeEnter"
+    @enter="enter"
+    @after-enter="afterEnter">
+    <p class="ball" v-show="flag"></p>
+    </transition>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        flag:false
+      },
+      methods:{
+        beforeEnter(el){
+          el.style.transform = 'translate(0,0)';
+        },
+        enter(el,done){
+          el.offsetWidth;
+          el.style.transform = "translate(100px,200px)";
+          el.style.transition = "all 0.5s ease";
+          done();
+        },
+        afterEnter(el){
+          this.flag = false;
+          console.log("ok");
+        }
+      }
+    })
+  </script>
+</body>
+</html>

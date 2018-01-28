@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button @click="flag=!flag">Toggle</button>
+    <transition
+    @before-enter="beforeEnter"
+    @enter="enter"
+    @after-enter="afterEnter"
+    
+    @before-leave="beforeLeave"
+    @leave="leave"
+    @after-leave="afterLeave"
+    v-bind:css="false">
+    <h3 v-show="flag">动画钩子函数基础用法</h3>
+    </transition>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        flag:false
+      },
+      methods:{
+        beforeEnter(el){
+          el.style.transform = 'translateX(150px)';
+        },
+        enter(el,done){
+          el.offsetTop;
+          el.style.transform = "translateX(0px)";
+          el.style.transition = "all 0.5s ease";
+          done();
+        },
+        afterEnter(el){
+          console.log('入场动画完成');
+        },
+        beforeLeave(el){
+          el.style.transform = "translateX(0px)";
+        },
+        leave(el,done){
+          el.offsetTop;
+          el.style.transform = 'translateX(150px)'
+          el.style.transition = 'all 0.5s ease';
+          // done();
+        },
+        afterLeave(el){
+          console.log('出场完成');
+        }
+      }
+    })
+  </script>
+</body>
+</html>

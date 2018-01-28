@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <style>
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 1s ease;
+    }
+
+    .v-move{
+      transition: all ls ease;
+    }
+    .v-leave-active{
+      position: absolute;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="name">
+    <button @click="add">Add</button>
+    <transition-group appear tag="ul">
+      <li v-for="item in list" :key="item.id" @click="remove(item.id)">
+        {{item.name}}
+      </li>
+    </transition-group>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        name:"",
+        list:[
+          {id:1,name:"one"},
+          {id:2,name:"two"}
+        ]
+      },
+      methods:{
+        add(){
+          if(this.name.trim() === ''){
+            return alert("不能为空");
+          }
+          this.list.unshift({ id: this.list.length + 1, name: this.name })
+          this.name = ''
+        },
+        remove(id){
+          const index = this.list.findIndex(item => item.id == id);
+          this.list.splice(index,1);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

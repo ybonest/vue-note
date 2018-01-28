@@ -29,8 +29,9 @@
       
       @before-leave="beforeLeave"
       @leave="leave"
-      @after-leave="afterLeave">
-      <h1 v-show="flag" v-bind:css="false">钩子动画</h1>
+      @after-leave="afterLeave"
+      v-bind:css="false">
+      <h1 v-show="flag">钩子动画</h1>
     </transition>
     <transition>
       <h1 v-show="flag">钩子动画</h1>
