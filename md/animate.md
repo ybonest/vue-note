@@ -233,17 +233,20 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
 
 > 推荐对于仅使用JavaScript过渡的元素添加v-bind:css="false"，Vue会跳过CSS的检测
 
-动画实例，使用动画钩子函数[(链接)](html/animate5.html)
+动画实例，使用动画钩子函数[(链接)](https://ybonest.github.io/vue-note/html/animate5.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/animate5.html"></iframe>
 
-动画实例，使用动画钩子函数[(链接)](html/animate6.html)
+动画实例，使用动画钩子函数[(链接)](https://ybonest.github.io/vue-note/html/animate6.html)
 <iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate6.html"></iframe>
 
-动画实例，使用动画钩子函数[(链接)](html/animate7.html)
+动画实例，使用动画钩子函数[(链接)](https://ybonest.github.io/vue-note/html/animate7.html)
 <iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate7.html"></iframe>
 
-动画实例，使用transition-group[(链接)](html/animate8.html)
+动画实例，使用transition-group[(链接)](https://ybonest.github.io/vue-note/html/animate8.html)
 <iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate8.html"></iframe>
 
-动画实例，使用transition-group升级版[(链接)](html/animate8.html)
+动画实例，使用transition-group升级版[(链接)](https://ybonest.github.io/vue-note/html/animate8.html)
 <iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate8.html"></iframe>
+
+动画实例，使用结束动画插件Velocity[(链接)](https://ybonest.github.io/vue-note/html/animateandVelocity.html)
+<iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/animateandVelocity.html"></iframe>
