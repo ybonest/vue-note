@@ -234,5 +234,5 @@ Vue提供了transition的封装组件，在下列情形中，可以给任何元�
 
 
 
-<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="animate6.html"></iframe>
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="html/animate6.html"></iframe>
 <script src="/vue-note/js/common.js"></script>
