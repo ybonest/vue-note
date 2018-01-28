@@ -85,6 +85,7 @@
       template: '<h1>movie --- {{ $route.params.type }}</h1>',
       created() {
         console.log(this);
+        // 获取路由URL传递过来的参数
         console.log(this.$route.params.type)
       }
     }
@@ -114,3 +115,11 @@
 
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/router2.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router2.html"></iframe>
+
+
+传多个参数时与传单个参数基本一致
++ 如下`<router-link to="/movie/starting/3">movie</router-link>`传入starting和3两个参数
++ 在VueRouter实例对应的路由规则中指定path为`{path:'/movie/:type/:id',component:movie}`
+
+代码展示以及[链接](https://ybonest.github.io/vue-note/html/router3.html)
+<iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router3.html"></iframe>
