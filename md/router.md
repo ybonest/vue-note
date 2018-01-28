@@ -123,3 +123,10 @@
 
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/router3.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router3.html"></iframe>
+
+使用props传参(推荐方法)
+1. 在VueRouter实例的routes规则中添加``rops:true`,例：`{ path: '/movie/:type/:id', component: movie, props: true }`
+2. 在对应的路由组件中增加props，例如：`props:['type','id']`
+
+代码展示以及[链接](https://ybonest.github.io/vue-note/html/router4.html)
+<iframe style="overflow:hidden;width:100%" class="yboflag" src="html/router4.html"></iframe>

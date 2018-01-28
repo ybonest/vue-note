@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <script src="../js/vue-router-3.0.1.js"></script>
+  <title>Document</title>
+  <style>
+    .ybo {
+      height: 150px;
+      width: 150px;
+      border: 1px solid #666;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/home/1">home</router-link>
+    <router-link to="/movie/starting/2/1">movie-start</router-link>
+    <router-link to="/movie/endding/2/2">movie-end</router-link>
+    <router-link to="/about/3">about</router-link>
+    <transition @before-enter="beforeEnter" @enter="enter" @leave="leave">
+      <router-view></router-view>
+    </transition>
+  </div>
+  <script>
+    const home = {
+      template: '<div v-if="flag==1" class="ybo">home</div>',
+      props:["flag"],
+      created() {
+        console.log("flag",this.flag);
+      }
+    }
+    const movie = {
+      template: `<div v-if="flag==2" class="ybo">
+          <p>movie</p>
+          <p>{{ type }}</p>
+          <p v-if="id==1">star and star</p>
+          <p v-else>earth and earth</p>
+        </div>`,
+      props: ["type", "id","flag"],
+      created() {
+        console.log("flag",this.flag);
+      }
+    }
+    const about = {
+      template: '<div v-if="flag==3" class="ybo">about</div>',
+      props:["flag"],
+      created() {
+        console.log("flag",this.flag);
+      }
+    }
+
+    var router = new VueRouter({
+      routes: [
+        { path: '/home/:flag', component: home, props: true },
+        { path: '/movie/:type/:flag/:id', component: movie, props: true }, // props 表示，在组件中，可以直接 用 props 数组来接收 路由中的参数
+        { path: '/about/:flag', component: about, props: true }
+      ]
+    })
+    new Vue({
+      el: "#app",
+      data: {},
+      methods: {
+        beforeEnter(el) {
+          el.style.opacity = 0;
+          el.style.transform = 'rotateZ(0deg)'
+        },
+        enter(el, done) {
+          el.offsetWidth;
+          el.style.opacity = 1;
+          el.style.transition="all 2s ease";
+          el.style.transform = 'rotateZ(10deg)'
+          // done()
+        },
+        leave(el, done) {
+          el.style.opacity = 0;
+          el.style.transition="all 2s ease";
+          el.style.transform = 'rotateZ(0deg)'
+          // done()
+        }
+      },
+      router
+    })
+  </script>
+</body>
+
+</html>
