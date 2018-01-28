@@ -29,7 +29,13 @@
         { path: '/home', component: home },
         { path: '/movie', component: movie },
         { path: '/about', component: about }
-      ]
+      ],
+      // 当某一个路由规则被选中时，Vue会给该路由规则渲染成的a标签增加
+      //class="router-link-exact-active router-link-active"，
+      //因此我们可以router-link-active来修改标签被选中的默认样式，即通俗说的
+      //高亮效果，同时Vue-router中还提供了linkActiveClass属性，可以覆盖默认提供的
+      //router-link-active类名
+      linkActiveClass:'yboactive'
     })
 
     new Vue({
@@ -43,3 +49,5 @@
 
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/router1.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router1.html"></iframe>
+
+
