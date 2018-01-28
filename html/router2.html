@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue-2.5.13.js"></script>
+  <script src="../js/vue-router-3.0.1.js"></script>
+  <style>
+    .yboactive{
+      font-size: 18px;
+      color: aqua;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+      font-weight: bolder;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/home">home</router-link>
+    <router-link to="/movie/starting">starting</router-link>
+    <router-link to="/movie/endding">endding</router-link>
+    <router-link to="/about">about</router-link>
+
+    <router-view></router-view>
+  </div>
+  <script>
+    const home = {
+      template: '<h1>home</h1>'
+    }
+    const movie = {
+      template: '<h1>movie --- {{ $route.params.type }}</h1>',
+      created() {
+        console.log(this);
+        console.log(this.$route.params.type)
+      }
+    }
+    const about = {
+      template: '<h1>about</h1>'
+    }
+
+    const router = new VueRouter({
+      routes: [
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: home },
+        // 在路由规则的 path 中，可以通过 : 来指定规则的某一部分，是参数；
+        { path: '/movie/:type', component: movie },
+        { path: '/about', component: about }
+      ],
+      linkActiveClass:'yboactive'
+    })
+
+    new Vue({
+      el:"#app",
+      data:{},
+      methods:{},
+      router
+    })
+  </script>
+</body>
+
+</html>

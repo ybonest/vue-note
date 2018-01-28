@@ -64,5 +64,53 @@
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/router1.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router1.html"></iframe>
 
+### 路由传参
+使用$route.params
+1. 在VueRouter实例中，指定routes的path，用`:参数`方式指定传参
+2. 在对应的component中用 `$route.params.参数` 获取传参内容
+```
+<div id="app">
+    <router-link to="/home">home</router-link>
+    <router-link to="/movie/starting">starting</router-link>
+    <router-link to="/movie/endding">endding</router-link>
+    <router-link to="/about">about</router-link>
 
+    <router-view></router-view>
+  </div>
+  <script>
+    const home = {
+      template: '<h1>home</h1>'
+    }
+    const movie = {
+      template: '<h1>movie --- {{ $route.params.type }}</h1>',
+      created() {
+        console.log(this);
+        console.log(this.$route.params.type)
+      }
+    }
+    const about = {
+      template: '<h1>about</h1>'
+    }
 
+    const router = new VueRouter({
+      routes: [
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: home },
+        // 在路由规则的 path 中，可以通过 : 来指定规则的某一部分，是参数；
+        { path: '/movie/:type', component: movie },
+        { path: '/about', component: about }
+      ],
+      linkActiveClass:'yboactive'
+    })
+
+    new Vue({
+      el:"#app",
+      data:{},
+      methods:{},
+      router
+    })
+  </script>
+```
+
+代码展示以及[链接](https://ybonest.github.io/vue-note/html/router2.html)
+<iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router2.html"></iframe>
