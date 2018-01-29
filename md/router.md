@@ -1,3 +1,4 @@
+------------**路由部分主要参考官方文档，详细内容请查看[链接](https://router.vuejs.org/zh-cn/)**
 ### 路由基础用法
 1. 使用<router-link>创建路由hash链接
 2. 使用</router-view>创建路由组件容器
@@ -282,3 +283,46 @@ const router = new VueRouter({
 
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/router6.html)
 <iframe style="overflow:hidden;width:100%" class="yboflag" src="html/router6.html"></iframe>
+
+### 重定向
+重定向也是通过routes配置来完成，例：
+```
+const router = new VueRouter({
+  routes:[
+    {path:'/a',redirect:'/b'}
+  ]
+})
+```
+
+重定向的目标也可以是一个命名的路由
+```
+const router = new VueRouter({
+  routes:[
+    {path:'/a',redirect:{name:'foo'}}
+  ]
+})
+```
+
+甚至是一个方法，动态返回重定向目标
+```
+const router = new VueRouter({
+  routes:[
+    {
+      path:'/a',redirect:to => {
+        //方法接收，目标路由 作为参数
+        // return 重定向的 字符串路径/路径对象
+      }
+    }
+  ]
+})
+```
+
+### 别名
+重定向的意思是，当用户访问/a时，url将会被替换为/b，然后匹配路由为/b，而别名则是:如果/a的别名是/b，意味着，当用户访问/b时，url会保持为/b，但是路由匹配则为/a,就像用户访问/a一样
+```
+const router = new VueRouter({
+  routes:[
+    {path:'/a',component:A,alias:'/b'}
+  ]
+})
+```
