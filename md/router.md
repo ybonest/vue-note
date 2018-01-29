@@ -236,3 +236,21 @@ router.replace(location,onComplete?,onAbort?)
 
 + 声明式用法：`<router-link :to="..." replace>`
 + 编程式：`router.replace(...)`
+
+### 命名路由
+在创建Router实例的时候，可以在routes配置中给某个路由设置名称，例：
+```
+const router = new VueRouter({
+  routes:[
+    {
+      path:'/user/:userId',
+      name:'user',  //此处与声明式或者编程式中的name对应，否则无法跳转
+      component:User
+    }
+  ]
+})
+//1. 如果使用声明式需要在router-link中如下填写
+<router-link :to="{name:'user',params:{userId:123}}">User</router-link>
+//2. 如果使用编程式需要在router.push()中如下填写
+router.push({name:'user',params:{userId:123}})
+```
