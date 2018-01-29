@@ -5,3 +5,4 @@
 - [生命周期](/md/lifecircle.md)
 - [动画](/md/animate.md)
 - [路由](/md/router.md)
+- [计算属性和监视](/md/computedwatch.md)

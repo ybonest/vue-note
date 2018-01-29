@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <label for="">first name：</label><input type="text" v-model="firstName"><br>
+    <label for="">last name：</label><input type="text" v-model="lastName"><br>
+    <label for="">fnTest：</label><input type="text" :value="fnTest">
+    <p v-text="fnTest"></p>
+  </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data:{
+        firstName:"ybo",
+        lastName:"god"
+      },
+      computed:{
+        fnTest:function(){  //计算属性中一定要return 一个值，否则计算属性将不存在意义
+          return this.firstName + '  ' + this.lastName;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

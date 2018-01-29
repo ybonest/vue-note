@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="data1">
+    <input type="button" value="修改data2对象的值" @click="changData2">
+    <!-- 此处由于仅仅改变对象属性的值，而且对于的数值监听中并未添加deep:true所以无法触发监听函数 -->
+    <input type="button" value="修改data2对象属性的值" @click="changeData2Attr">  
+    <input type="button" value="修改data3对象属性值，并添加深度监听属性" @click="changeData3Attr">
+    <p>data1：{{data1}}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        data1:'1',
+        data2:{key1:"one",key2:"two"},
+        data3:{key1:"deep"}
+      },
+      methods:{
+        changData2(){
+          this.data2 = {key1:"two",key2:"one"}; //data2重新赋值
+        },
+        changeData2Attr(){
+          this.data2.key1 = "three";  //仅修改data2的属性值
+        },
+        changeData3Attr(){
+          this.data3.key1 = "bobo";
+        }
+      },
+      watch:{ //watch监听数据，当对应数值发生变化，函数调用被
+        data1:{
+          handler:function(newVal,oldVal){
+            console.log('data1的数据发生改变了,最新的值为：'+newVal+';旧值为:'+oldVal);
+          }
+        },
+        data2:function(newVal,oldVal){
+          console.log("data2 的数据发生了改变");
+          console.log('newVal:'+newVal.key1+'-'+newVal.key2)
+          console.log('oldVal:'+oldVal.key1+'-'+oldVal.key2)
+        },
+        data3:{
+          handler:function(newVal,oldVal){
+            console.log("深度监听,仅改变属性");
+            //此处旧值与新值相等，因为在变异（不是替换）对象或数组时，旧值将与新值相同，因为它们的引用指向
+            //同一个对象/数组
+            console.log("data3新:"+newVal.key1);
+            console.log("data3旧:"+oldVal.key1);
+          },
+          deep:true //deep表示深度监听
+        }
+      }
+    })
+  </script>
+</body>
+</html>
