@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <script src="../js/vue-router-3.0.1.js"></script>
+  <title>Document</title>
+  <style>
+    .ybo {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ybo li {
+      width: 60px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #cccccc;
+      float: left;
+      margin-left: -1px;
+      cursor: pointer;
+    }
+
+    .yboactive {
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul class="ybo">
+      <li @click="goOne">one</li>
+      <li @click="goTwo">two</li>
+      <li @click="goThree">three</li>
+      <li @click="goFour">four</li>
+    </ul>
+    <br>
+    <router-view></router-view>
+  </div>
+  <script>
+    const one = {
+      template: '<h1>one</h1>',
+      props: ['flag', 'id'],
+      created() {
+        console.log('flag', this.flag)
+        console.log('id', this.id)
+      }
+    }
+    const two = {
+      template: '<h1>two</h1>',
+      props: ['flag', 'id'],
+      created() {
+        console.log('flag', this.flag)
+        console.log('id', this.id)
+      }
+    }
+    const three = {
+      template: '<h1>three</h1>',
+      props: ['flag', 'id'],
+      created() {
+        console.log('flag', this.flag)
+        console.log('id', this.id)
+      }
+    }
+    const four = {
+      template: '<h1>four</h1>',
+      props: ['flag', 'id'],
+      created() {
+        console.log('flag', this.flag)
+        console.log('id', this.id)
+      }
+    }
+    var router = new VueRouter({
+      routes: [
+        { path: '/one/:flag/:id', component: one, props: true },
+        { path: '/two/:flag/:id', component: two, name: 'two', props: true },
+        { path: '/three/:flag/:id', component: three, props: true },
+        { path: '/four/:flag/:id', component: four, props: true },
+      ],
+      linkActiveClass: 'yboactive'
+    })
+    new Vue({
+      el: "#app",
+      data: {},
+      methods: {
+        goOne() {
+          // this.$router.back(); //后退1个历史记录
+          // this.$router.forward();//前进一个
+          // this.$router.go(n)
+          this.$router.push('/one/fish/1');  //传参方式一
+        },
+        goTwo() {
+          console.log("two");
+          //使用命名路由，注意此处name需要与VueRouter实例中对应的路由配置中的name属性对应
+          this.$router.push({ name: 'two', params: { flag: 'brid', id: 2 } });
+        },
+        goThree() {
+          const id = 3;
+          const flag = 'god';
+          this.$router.push({ path: `/three/${flag}/${id}` });
+        },
+        goFour() {
+          // push中如果提供了path，params会被忽略，因此如下写法params不生效
+          this.$router.push({ path: 'four', params: { flag: 'cat', id: 4 } })
+          // this.$router.push('/four/cat/4');
+        },
+      },
+      router
+    })
+  </script>
+</body>
+
+</html>

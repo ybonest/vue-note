@@ -125,8 +125,105 @@
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/router3.html"></iframe>
 
 使用props传参(推荐方法)
-1. 在VueRouter实例的routes规则中添加``rops:true`,例：`{ path: '/movie/:type/:id', component: movie, props: true }`
+1. 在VueRouter实例的routes规则中添加`props:true`,例：`{ path: '/movie/:type/:id', component: movie, props: true }`
 2. 在对应的路由组件中增加props，例如：`props:['type','id']`
 
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/router4.html)
 <iframe style="overflow:hidden;width:100%" class="yboflag" src="html/router4.html"></iframe>
+
+### 编程式导航
+除了使用<router-link>创建的a标签定义导航链接外，还可以使用router的实例方法`router.push(location, onComplete?, onAbort?)`实现
+
+该方法的参数可以是一个字符串路径，或者一个描述地址的对象
+```
+router.push('home')//字符串
+router.push({path:'home'}) //对象
+router.push({name:'user',params:{userId:123}}) //命名的路由
+router.push({path:'register,query:{plan:'private'}}) //带查询参数，变成/register?plan=private
+```
+
+代码展示以及[链接](https://ybonest.github.io/vue-note/html/router5.html)
+```
+  <div id="app">
+    <ul class="ybo">
+      <li @click="goOne">one</li>
+      <li @click="goTwo">two</li>
+      <li @click="goThree">three</li>
+      <li @click="goFour">four</li>
+    </ul>
+    <br>
+    <router-view></router-view>
+  </div>
+  <script>
+    const one = {
+      template: '<h1>one</h1>',
+      props: ['flag', 'id'],
+      created() {
+        console.log('flag', this.flag)
+        console.log('id', this.id)
+      }
+    }
+    const two = {
+      template: '<h1>two</h1>',
+      props: ['flag', 'id'],
+      created() {
+        console.log('flag', this.flag)
+        console.log('id', this.id)
+      }
+    }
+    const three = {
+      template: '<h1>three</h1>',
+      props: ['flag', 'id'],
+      created() {
+        console.log('flag', this.flag)
+        console.log('id', this.id)
+      }
+    }
+    const four = {
+      template: '<h1>four</h1>',
+      props: ['flag', 'id'],
+      created() {
+        console.log('flag', this.flag)
+        console.log('id', this.id)
+      }
+    }
+    var router = new VueRouter({
+      routes: [
+        { path: '/one/:flag/:id', component: one, props: true },
+        { path: '/two/:flag/:id', component: two, name: 'two', props: true },
+        { path: '/three/:flag/:id', component: three, props: true },
+        { path: '/four/:flag/:id', component: four, props: true },
+      ],
+      linkActiveClass: 'yboactive'
+    })
+    new Vue({
+      el: "#app",
+      data: {},
+      methods: {
+        goOne() {
+          // this.$router.back(); //后退1个历史记录
+          // this.$router.forward();//前进一个
+          // this.$router.go(n)
+          this.$router.push('/one/fish/1');  //传参方式一
+        },
+        goTwo() {
+          console.log("two");
+          //使用命名路由，注意此处name需要与VueRouter实例中对应的路由配置中的name属性对应
+          this.$router.push({ name: 'two', params: { flag: 'brid', id: 2 } });
+        },
+        goThree() {
+          const id = 3;
+          const flag = 'god';
+          this.$router.push({ path: `/three/${flag}/${id}` });
+        },
+        goFour() {
+          // push中如果提供了path，params会被忽略，因此如下写法params不生效
+          this.$router.push({ path: 'four', params: { flag: 'cat', id: 4 } })
+          // this.$router.push('/four/cat/4');
+        },
+      },
+      router
+    })
+  </script>
+```
+<iframe style="overflow:hidden;width:100%" class="yboflag" src="html/router5.html"></iframe>
