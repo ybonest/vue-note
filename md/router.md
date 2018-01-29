@@ -254,3 +254,31 @@ const router = new VueRouter({
 //2. 如果使用编程式需要在router.push()中如下填写
 router.push({name:'user',params:{userId:123}})
 ```
+
+### 命名视图
+有时候想同时（同级）展示多个视图，而不是嵌套视图，例如创建一个布局，有sidebar（侧导航）和main（主内容）两个视图，这个时候命名视图就派上用场了，我们可以在界面中拥有多个单独命名的视图，而不是只有一个单独的出口。
+
+```
+<router-view class="view one"></router-view>
+<router-view class="view two" name="a"></router-view>
+<router-view class="view three" name="b"></router-view>
+```
+
+一个视图使用一个组件渲染，因此对于同个路由，多个视图就需要多个组件
+```
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/',
+      components: {  //注意此处是components
+        default: Foo,
+        a: Bar,
+        b: Baz
+      }
+    }
+  ]
+})
+```
+
+代码展示以及[链接](https://ybonest.github.io/vue-note/html/router6.html)
+<iframe style="overflow:hidden;width:100%" class="yboflag" src="html/router6.html"></iframe>
