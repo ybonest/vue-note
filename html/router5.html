@@ -53,9 +53,9 @@
       }
     }
     const two = {
-      template: `<h1>two</h1>
+      template: `<div><h1>two</h1>  //注意：template只能含一个根元素
       <p>flag:{{ flag }}</p>
-      <p>id:{{ id }}</p>`,
+      <p>id:{{ id }}</p></div>`,
       props: ['flag', 'id'],
       created() {
         console.log('flag', this.flag)

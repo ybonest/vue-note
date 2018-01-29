@@ -164,7 +164,9 @@ router.push({path:'register,query:{plan:'private'}}) //带查询参数，变成/
       }
     }
     const two = {
-      template: '<h1>two</h1>',
+      template: `<div><h1>two</h1>  //注意：template只能含一个根元素
+      <p>flag:{{ flag }}</p>
+      <p>id:{{ id }}</p></div>`,
       props: ['flag', 'id'],
       created() {
         console.log('flag', this.flag)
@@ -227,3 +229,10 @@ router.push({path:'register,query:{plan:'private'}}) //带查询参数，变成/
   </script>
 ```
 <iframe style="overflow:hidden;width:100%" class="yboflag" src="html/router5.html"></iframe>
+
+
+router.replace(location,onComplete?,onAbort?)
+跟router.push很像，唯一不同的就是它不会向history添加新记录
+
++ 声明式用法：`<router-link :to="..." replace>`
++ 编程式：`router.replace(...)`
