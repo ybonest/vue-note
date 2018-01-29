@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <script src="../js/vue-router-3.0.1.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <router-link to="/home">home</router-link>
+    <router-link to="/movie">movie</router-link>
+    <router-link to="/about">about</router-link>
+    <router-view></router-view>
+    <hr>
+    {{ msg }}
+  </div>
+  <script>
+    var home = {
+      template:'<h1>home</h1>'
+    }
+    var movie = {
+      template:'<h1>movie</h1>'
+    }
+    var about = {
+      template:'<h1>about</h1>'
+    }
+
+    var router = new VueRouter({
+      routes:[
+        {path:'/home',component:home},
+        {path:'/movie',component:movie},
+        {path:'/about',component:about}
+      ]
+    })
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        msg:""
+      },
+      router,
+      created(){
+        console.log(this.$route);
+      },
+      watch:{
+        '$route.path':function(newVal,oldVal){
+          switch(newVal){
+            case '/home':
+            this.msg = '欢迎访问首页';
+            break;
+            case '/movie':
+            this.msg = '欢迎访问电影页面';
+            break;
+            case '/about':
+            this.msg = "欢迎访问关于页面";
+            break;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

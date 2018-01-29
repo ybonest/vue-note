@@ -90,3 +90,62 @@
 
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/watch1.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/watch1.html"></iframe>
+
+监听路由
+```
+<div id="app">
+    <router-link to="/home">home</router-link>
+    <router-link to="/movie">movie</router-link>
+    <router-link to="/about">about</router-link>
+    <router-view></router-view>
+    <hr>
+    {{ msg }}
+  </div>
+  <script>
+    var home = {
+      template:'<h1>home</h1>'
+    }
+    var movie = {
+      template:'<h1>movie</h1>'
+    }
+    var about = {
+      template:'<h1>about</h1>'
+    }
+
+    var router = new VueRouter({
+      routes:[
+        {path:'/home',component:home},
+        {path:'/movie',component:movie},
+        {path:'/about',component:about}
+      ]
+    })
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        msg:""
+      },
+      router,
+      created(){
+        console.log(this.$route);
+      },
+      watch:{
+        '$route.path':function(newVal,oldVal){
+          switch(newVal){
+            case '/home':
+            this.msg = '欢迎访问首页';
+            break;
+            case '/movie':
+            this.msg = '欢迎访问电影页面';
+            break;
+            case '/about':
+            this.msg = "欢迎访问关于页面";
+            break;
+          }
+        }
+      }
+    })
+  </script>
+```
+
+代码展示以及[链接](https://ybonest.github.io/vue-note/html/watch2.html)
+<iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/watch2.html"></iframe>
