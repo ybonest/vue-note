@@ -24,7 +24,10 @@
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/computed.html"></iframe>
 
 ### 属性侦听
-基础用法
+Vue 提供了一种更通用的方式来观察和响应 Vue 实例上的数据变动：侦听属性
+
++ 基础用法
+
 ```
   <div id="app">
     <input type="text" v-model="data1">
@@ -91,7 +94,8 @@
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/watch1.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/watch1.html"></iframe>
 
-监听路由
++ 监听路由
+
 ```
 <div id="app">
     <router-link to="/home">home</router-link>
@@ -149,3 +153,22 @@
 
 代码展示以及[链接](https://ybonest.github.io/vue-note/html/watch2.html)
 <iframe style="overflow:hidden;height:150px;width:100%" class="yboflag" src="html/watch2.html"></iframe>
+
++ 开发中有时候需要进入页面时自动触发一次监听，此时可以设置`immediate: true`
+
+```
+// 该回调将会在侦听开始之后被立即调用
+d: {
+    handler: function (val, oldVal) { /* ... */ },
+    immediate: true
+  },
+```
+
++ deep:true 深度监听，默认情况下监听不会监听对象中某个属性值的变化，但是当设置deep:true后，则可以监听对象属性值的变化
+
+```
+c: {
+    handler: function (val, oldVal) { /* ... */ },
+    deep: true
+  },
+```
