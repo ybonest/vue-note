@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../js/vue-2.5.13.js"></script>
+  <title>Document</title>
+  <style>
+    button {
+      float: right;
+      border: none;
+    }
+
+    li {
+      color: #ffffff;
+    }
+
+    .t1 {
+      background-color: red;
+    }
+
+    .t2 {
+      background-color: yellow;
+    }
+
+    .t3 {
+      background-color: green;
+    }
+
+    .t4 {
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item,index) in list" :class="item.color">{{item.color}}
+        <button @click="deleteFn(index)">删除</button>
+      </li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        list: [
+          { color: 't1', id: 1 },
+          { color: 't2', id: 2 },
+          { color: 't3', id: 3 },
+          { color: 't4', id: 4 }
+        ]
+      },
+      methods: {
+        deleteFn(index) {
+          this.list.splice(index, 1);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
