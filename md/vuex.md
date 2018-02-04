@@ -87,6 +87,8 @@ vuex提供了共享数据的能力，我们可以把组件中共享的状态抽�
 #### mapState辅助函数
 mapState函数可以快捷方便的辅助我们生成计算属性，实时更新共享数据的变化
 
+实例展示以及[(链接)](https://ybonest.github.io/vue-note/vuexexample/example.1/index.html)
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="vuexexample/example.1/index.html"></iframe>
 ```
 <div id="app">
     <component-one></component-one>
