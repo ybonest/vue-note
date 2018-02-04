@@ -13,7 +13,7 @@ vuex提供了共享数据的能力，我们可以把组件中共享的状态抽�
 3. 在vuex中的state数据池中定义共享数据
 
 实例展示以及[(链接)](https://ybonest.github.io/vue-note/vuexexample/example/index.html)
-<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="/vuexexample/example/index.html"></iframe>
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="vuexexample/example/index.html"></iframe>
 ```
 <div id="app">
     <component-one></component-one>
