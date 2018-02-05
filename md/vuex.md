@@ -276,5 +276,73 @@ computed:{
 </script>
 ```
 
+#### mapGetters辅助函数
++ mapGetters辅助函数可以将store中的getter映射到局部计算属性
+
+```
+export default {
+  computed:{
+    //使用对象展开运算符将getter混入computed对象中
+    ...mapGetters([
+      'doneTodosCount',
+      'anotherGetter'
+    ])
+  }
+}
+```
+
+如果你想将一个getter属性另取一个名字，使用对象形式：
+```
+export default {
+  computed:{
+    //使用对象展开运算符将getter混入computed对象中
+    ...mapGetters([
+      doneCount:'doneTodosCount'
+    ])
+  }
+}
+```
+
+### Mutation
++ 更改Vuex的store中的状态唯一方法是提交mutation
++ mutation中第一个参数是state
+```
+const store = new Vuex.Store({
+  state:{
+    count:1
+  },
+  mutations:{
+    increment(state){
+      state.count++
+    }
+  }
+})
+```
+> mutation需要以相应的type调用store.commit方法
+
++ mutation可以传入第二个参数，这个参数一般是对象
+```
+//mutations定义
+mutations: {
+  increme(state) {
+    state.count++;
+  },
+  incremeArg(state,step){
+    state.count += step;
+  }
+}
+//调用mutation
+methods: {
+  add(){
+    this.$store.commit('increme');
+  },
+  addStep(){
+    this.$store.commit('incremeArg',10);
+  }
+}
+```
+实例展示以及[(链接)](https://ybonest.github.io/vue-note/vuexexample/example.5/index.html)
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="vuexexample/example.5/index.html"></iframe>
+
 
 
