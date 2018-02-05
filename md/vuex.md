@@ -306,6 +306,7 @@ export default {
 ### Mutation
 + 更改Vuex的store中的状态唯一方法是提交mutation
 + mutation中第一个参数是state
+
 ```
 const store = new Vuex.Store({
   state:{
@@ -318,9 +319,11 @@ const store = new Vuex.Store({
   }
 })
 ```
+
 > mutation需要以相应的type调用store.commit方法
 
 + mutation可以传入第二个参数，这个参数一般是对象
+
 ```
 //mutations定义
 mutations: {
@@ -341,6 +344,7 @@ methods: {
   }
 }
 ```
+
 实例展示以及[(链接)](https://ybonest.github.io/vue-note/vuexexample/example.5/index.html)
 <iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="vuexexample/example.5/index.html"></iframe>
 
