@@ -305,4 +305,21 @@ export default {
 }
 ```
 
+### Mutation
+
++ 更改Vuex的store中的状态唯一方法是提交mutation
++ mutation中第一个参数是state
+
+```
+const store = new Vuex.Store({
+  state:{
+    count:1
+  },
+  mutations:{
+    increment(state){
+      state.count++
+    }
+  }
+})
+```
 
