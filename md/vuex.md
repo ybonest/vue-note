@@ -347,3 +347,6 @@ methods: { //调用mutation
   }
 }
 ```
+
+实例展示以及[(链接)](https://ybonest.github.io/vue-note/vuexexample/example.5/index.html)
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="vuexexample/example.5/index.html"></iframe>
