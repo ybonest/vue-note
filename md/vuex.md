@@ -1,1 +1,1 @@
-- [vuex](./vuexdesc.md)
+- [vuex](/md/vuexdesc.md)
