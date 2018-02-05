@@ -170,7 +170,7 @@ computed: {
   }
 ```
 
-#### Getter
+### Getter
 + 有时候需要从store中的state中派生处于一些状态，例如对列表进行过滤排序并计数
 
 ```
@@ -185,7 +185,7 @@ computed:{
 
 + Vuex允许在store中定义`getter`（可以认为是store的计算属性），就像计算属性一样，getter的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了变化才会被重新计算
 
-+ 使用
+#### 使用
   1. **Getter接受state作为其第一个参数**
   2. **Getter会暴露store.getters对象**
   3. **Getter也可以接受其他getter作为第二个参数**
@@ -276,4 +276,31 @@ computed:{
     store  //将vuex实例挂载到组件上
   })
 </script>
+```
+
+#### mapGetters辅助函数
++ mapGetters辅助函数可以将store中的getter映射到局部计算属性
+
+```
+export default {
+  computed:{
+    //使用对象展开运算符将getter混入computed对象中
+    ...mapGetters([
+      'doneTodosCount',
+      'anotherGetter'
+    ])
+  }
+}
+```
+
+如果你想将一个getter属性另取一个名字，使用对象形式：
+```
+export default {
+  computed:{
+    //使用对象展开运算符将getter混入computed对象中
+    ...mapGetters([
+      doneCount:'doneTodosCount'
+    ])
+  }
+}
 ```
