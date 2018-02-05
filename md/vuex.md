@@ -168,7 +168,7 @@ computed: {
   }
 ```
 
-### Getter
+#### Getter
 + 有时候需要从store中的state中派生处于一些状态，例如对列表进行过滤排序并计数
 
 ```
@@ -187,12 +187,13 @@ computed:{
   1. **Getter接受state作为其第一个参数**
   2. **Getter会暴露store.getters对象**
   3. **Getter也可以接受其他getter作为第二个参数**
+  4. **可以通过让getter返回一个函数，来实现给getter传参**
 
 实例展示以及[(链接)](https://ybonest.github.io/vue-note/vuexexample/example.3/index.html)
 <iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="vuexexample/example.3/index.html"></iframe>
 ```
- <div id="app">
-    <component-one></component-one>
+<div id="app">
+  <component-one></component-one>
 </div>
 <script>
   const store = new Vuex.Store({
@@ -216,20 +217,29 @@ computed:{
         return state.carts;
       },
       filterCart: state => { //使用箭头函数
-        return state.carts.filter(cart => cart.id % 2 === 0) 
+        return state.carts.filter(cart => cart.id % 2 === 0)
+      },
+      getId5: (state) => (id) => {  //返回一个函数来传入参数
+        console.log(id);
+        console.log(state.carts.find(cart => cart.id === id))
+        return state.carts.find(cart => cart.id === id)
       }
     }
   })
   //定义组件
   Vue.component('component-one', {
     template: `<div>
-        <p>{{dataOne}}</p>
-        <p v-for="item in getCart" :key="item.id">{{item.count}}</p>
-        <hr>
-        <div>
-          <p v-for="item in getFiltersCart" :key="item.id">{{item.count}}</p>
-        </div>
-      </div>`,
+          <p>{{dataOne}}</p>
+          <p v-for="item in getCart" :key="item.id">{{item.count}}</p>
+          <hr>
+          <div>
+            <p v-for="item in getFiltersCart" :key="item.id">{{item.count}}</p>
+          </div>
+          <hr>
+          <div>
+            <p>{{getId5Arg.count}}</p>
+          </div>
+        </div>`,
     data() {
       return {
         dataOne: 'component-one组件'
@@ -246,10 +256,13 @@ computed:{
     },
     computed: {
       getCart() { //引入store中的getters
-        return this.$store.getters.filtersCart
+        return this.$store.getters.filtersCart;
       },
-      getFiltersCart(){
-        return this.$store.getters.filterCart
+      getFiltersCart() {
+        return this.$store.getters.filterCart;
+      },
+      getId5Arg() {
+        return this.$store.getters.getId5(5);  //调用getters传入参数
       }
     }
   })

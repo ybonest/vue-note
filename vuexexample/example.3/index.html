@@ -13,7 +13,6 @@
 <body>
   <div id="app">
     <component-one></component-one>
-    <hr>
   </div>
   <script>
     const store = new Vuex.Store({
@@ -37,20 +36,29 @@
           return state.carts;
         },
         filterCart: state => { //使用箭头函数
-          return state.carts.filter(cart => cart.id % 2 === 0) 
+          return state.carts.filter(cart => cart.id % 2 === 0)
+        },
+        getId5: (state) => (id) => {  //返回一个函数来传入参数
+          console.log(id);
+          console.log(state.carts.find(cart => cart.id === id))
+          return state.carts.find(cart => cart.id === id)
         }
       }
     })
     //定义组件
     Vue.component('component-one', {
       template: `<div>
-          <p>{{dataOne}}</p>
-          <p v-for="item in getCart" :key="item.id">{{item.count}}</p>
-          <hr>
-          <div>
-            <p v-for="item in getFiltersCart" :key="item.id">{{item.count}}</p>
-          </div>
-        </div>`,
+            <p>{{dataOne}}</p>
+            <p v-for="item in getCart" :key="item.id">{{item.count}}</p>
+            <hr>
+            <div>
+              <p v-for="item in getFiltersCart" :key="item.id">{{item.count}}</p>
+            </div>
+            <hr>
+            <div>
+              <p>{{getId5Arg.count}}</p>
+            </div>
+          </div>`,
       data() {
         return {
           dataOne: 'component-one组件'
@@ -66,11 +74,14 @@
         }
       },
       computed: {
-        getCart() { //引入store中普通函数定义的getter
-          return this.$store.getters.filtersCart
+        getCart() { //引入store中的getters
+          return this.$store.getters.filtersCart;
         },
-        getFiltersCart(){
-          return this.$store.getters.filterCart
+        getFiltersCart() {
+          return this.$store.getters.filterCart;
+        },
+        getId5Arg() {
+          return this.$store.getters.getId5(5);  //调用getters传入参数
         }
       }
     })
