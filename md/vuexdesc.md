@@ -320,7 +320,7 @@ const store = new Vuex.Store({
 })
 ```
 
-> mutation需要以相应的type调用store.commit方法
++ mutation需要以相应的type调用store.commit方法
 
 + mutation可以传入第二个参数，这个参数一般是对象
 

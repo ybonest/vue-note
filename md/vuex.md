@@ -323,3 +323,27 @@ const store = new Vuex.Store({
 })
 ```
 
++ mutation需要以相应的type调用store.commit方法
+
++ mutation可以传入第二个参数，这个参数一般是对象
+
+```
+
+mutations: { //mutations定义
+  increme(state) {
+    state.count++;
+  },
+  incremeArg(state,step){
+    state.count += step;
+  }
+}
+
+methods: { //调用mutation
+  add(){
+    this.$store.commit('increme');
+  },
+  addStep(){
+    this.$store.commit('incremeArg',10);
+  }
+}
+```
