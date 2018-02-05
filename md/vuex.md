@@ -367,6 +367,7 @@ mutations: {
 ```
 
 #### mapMutations
+
 除了使用this.$store.commit('xxx') 提交 mutation外，也可以用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用
 ```
  ...Vuex.mapMutations([  //接受数组参数
