@@ -306,7 +306,7 @@ export default {
 ```
 
 ### Mutation
-
+#### 使用
 + 更改Vuex的store中的状态唯一方法是提交mutation
 + mutation中第一个参数是state
 
@@ -349,4 +349,19 @@ methods: { //调用mutation
   }
 }
 ```
+
++ 除却上例中的提交方式外，mutation也可以直接使用包含type属性的对象
+```
+store.commit({
+  type:'increment',
+  amount:10
+})
+
+mutations: {
+  increment (state, payload) {
+    state.count += payload.amount
+  }
+}
+```
+
 
