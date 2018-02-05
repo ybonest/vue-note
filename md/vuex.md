@@ -85,3 +85,88 @@ vuex提供了共享数据的能力，我们可以把组件中共享的状态抽�
   </script>
 ```
 
+#### mapState辅助函数
+mapState函数可以快捷方便的辅助我们生成计算属性，实时更新共享数据的变化
+
+实例展示以及[(链接)](https://ybonest.github.io/vue-note/vuexexample/example.1/index.html)
+<iframe style="overflow:hidden;height:180px;width:100%" class="yboflag" src="vuexexample/example.1/index.html"></iframe>
+
+```
+<div id="app">
+    <component-one></component-one>
+  </div>
+  <script>
+    const store = new Vuex.Store({
+      state:{  //数据池
+        count:0,
+        cart:[
+          {id:1,count:1},
+        ]
+      },
+      mutations:{
+        increme(state){
+          state.count++;
+        }
+      }
+    })
+    //定义组件
+    Vue.component('component-one',{
+      template:`<div>
+          <p>{{dataOne}}</p>
+          <button @click="add">+1</button>
+          <p>{{count}}</p>
+          <p>{{countAlias}}</p>
+          <p>{{countPlusLocalState}}</p>
+        </div>`,
+      data(){
+        return {
+          dataOne:'component-one组件',
+          localCount:2
+        }
+      },
+      methods:{
+        add(){
+          this.$store.commit('increme') //commit参数对应所要调用的mutations中的属性方法
+        }
+      },
+      computed:Vuex.mapState({  //使用mapState生成计算属性
+        count:state => state.count, //使用箭头函数
+        countAlias:'count', //传入的字符串等同于箭头函数state => state.count
+        countPlusLocalState(state){
+          return state.count + this.localCount
+        }
+      })
+    })
+    const vm = new Vue({
+      el:"#app",
+      data:{
+        dataApp:'来自App的数据'
+      },
+      store  //将vuex实例挂载到组件上
+    })
+  </script>
+```
+
+> 当映射的计算属性的名称与 state 的子节点名称相同时，也可以给 mapState 传一个字符串数组
+
+```
+computed: mapState([
+  // 映射 this.count 为 store.state.count
+  'count'
+])
+```
+
+> 使用对象展开运算符
+上例中都是覆盖式的将共享数据以计算属性的方式映射到computed，这样组件再也无法自定义自己的计算属性，因此推荐使用对象展开运算符形式
+
+```
+computed: {
+    // 这是使用 vuex 映射过来的计算属性,mapState传入的是是要映射到该处的共享数据
+    ...mapState(["count"]),
+    // 这是自定义的计算属性
+    myinfo: function() {
+      return this.a + "~~~~";
+    }
+  }
+```
+
