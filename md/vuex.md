@@ -370,13 +370,21 @@ mutations: {
 
 除了使用this.$store.commit('xxx') 提交 mutation外，也可以用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用
 ```
- ...Vuex.mapMutations([  //接受数组参数
-          'increme',
-          'incremeArg'
-        ]),
-        ...Vuex.mapMutations({  //接受对象参数
-          add:'increme'
-        })
+ methods: {
+  // add(){
+  //   this.$store.commit('increme');
+  // },
+  // addStep(){
+  //   this.$store.commit('incremeArg',parseInt(this.step));
+  // }
+  ...Vuex.mapMutations([
+    'increme',
+    'incremeArg'
+  ]),
+  ...Vuex.mapMutations({
+    add:'increme'
+  })
+}
 ```
 
 实例展示以及[(链接)](https://ybonest.github.io/vue-note/vuexexample/example.6/index.html)
