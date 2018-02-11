@@ -1,0 +1,16 @@
+vue2-preview 基于vue的缩略图插件
+
+swiper.js 轮播图插件
+
+mui.js 移动端插件
+
+minit ui 基于vue.js的移动端组件库
+
+axios vue 推荐的ajax请求插件
+
+moment 时间格式化插件
+
+zepto 针对移动端，是jQuery的精简
+
+ECharts
+
