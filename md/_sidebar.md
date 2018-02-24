@@ -7,3 +7,4 @@
 - [路由](/md/router.md)
 - [计算属性和属性侦听](/md/computedwatch.md)
 - [父子组件之异步传值踩坑记](/md/componentdata.md)
+- [完整的vue实例](/md/exampleVue.md)
